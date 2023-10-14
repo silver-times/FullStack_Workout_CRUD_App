@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import WorkoutDetail from "../components/WorkoutDetail";
 
 const Home = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -24,16 +25,15 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-2xl uppercase">
-        hi
-        {workouts &&
-          workouts.map((workout: any) => (
-            <div key={workout.id}>
-              <h2>{workout.title}</h2>
-            </div>
-          ))}
-      </h1>
+    <div className="flex container mx-auto">
+      <div className="w-2/3">
+        <h1 className="text-2xl ">
+          {workouts &&
+            workouts.map((workout: any) => (
+              <WorkoutDetail key={workout.id} {...workout} />
+            ))}
+        </h1>
+      </div>
     </div>
   );
 };
