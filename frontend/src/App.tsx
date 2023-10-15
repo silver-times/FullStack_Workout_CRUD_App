@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="bg-[#00425A] h-screen">
+    <div className="bg-[#00425A] h-full">
       <BrowserRouter>
         <Navbar />
         <div className="">

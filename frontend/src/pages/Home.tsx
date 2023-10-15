@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div className="flex container mx-auto gap-8">
-      <div className="w-2/3">
+      <div className="w-3/4">
         <h1 className="text-2xl ">
           {workouts &&
             workouts.map((workout: any) => (
@@ -35,7 +35,7 @@ const Home = () => {
             ))}
         </h1>
       </div>
-      <div className="w-1/3">
+      <div className="w-1/4">
         <WorkoutForm />
       </div>
     </div>

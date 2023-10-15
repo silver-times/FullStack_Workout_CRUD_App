@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 export const getWorkouts = async (req: Request, res: Response) => {
   try {
     const workouts = await prisma.workout.findMany();
-    res.json(workouts);
+    res.status(200).json(workouts);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -27,7 +27,7 @@ export const getWorkout = async (req: Request, res: Response) => {
         id: Number(id),
       },
     });
-    res.json(workout);
+    res.status(200).json(workout);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -48,7 +48,7 @@ export const createWorkout = async (req: Request, res: Response) => {
         load,
       },
     });
-    res.json(workout);
+    res.status(200).json(workout);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -77,7 +77,7 @@ export const updateWorkout = async (req: Request, res: Response) => {
         load,
       },
     });
-    res.json(workout);
+    res.status(200).json(workout);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -97,7 +97,7 @@ export const deleteWorkout = async (req: Request, res: Response) => {
         id: Number(id),
       },
     });
-    res.json(workout);
+    res.status(200).json(workout);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
