@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import WorkoutDetail from "../components/WorkoutDetail";
+import WorkoutForm from "../components/WorkoutForm";
 
 const Home = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -25,7 +26,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex container mx-auto">
+    <div className="flex container mx-auto gap-8">
       <div className="w-2/3">
         <h1 className="text-2xl ">
           {workouts &&
@@ -33,6 +34,9 @@ const Home = () => {
               <WorkoutDetail key={workout.id} {...workout} />
             ))}
         </h1>
+      </div>
+      <div className="w-1/3">
+        <WorkoutForm />
       </div>
     </div>
   );
