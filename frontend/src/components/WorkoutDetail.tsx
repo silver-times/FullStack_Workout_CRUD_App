@@ -39,7 +39,13 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
   return (
     <div className="rounded-xl my-5 mx-auto p-5 relative shadow-lg border-2 border-heading bg-[#1F8A70]">
       {isEditing ? (
-        <EditWorkout id={id} title={title} reps={reps} load={load} />
+        <EditWorkout
+          setIsEditing={setIsEditing}
+          id={id}
+          title={title}
+          reps={reps}
+          load={load}
+        />
       ) : (
         <>
           <div className="flex justify-between items-center">
