@@ -1,0 +1,70 @@
+import { useState } from "react";
+import { useWorkoutContext } from "../hooks/useWorkoutContext";
+
+type EditWorkoutProps = {
+  id: number;
+  title: string;
+  reps: number;
+  load: number;
+};
+
+const EditWorkout = ({ id, title, reps, load }: EditWorkoutProps) => {
+  const { dispatch } = useWorkoutContext();
+
+  const [newTitle, setNewTitle] = useState(title);
+  const [newReps, setNewReps] = useState(reps);
+  const [newLoad, setNewLoad] = useState(load);
+
+  const handleUpdate = async () => {
+    const workout = {
+      id,
+      title: newTitle,
+      reps: newReps,
+      load: newLoad,
+    };
+
+    const response = await fetch(`http://localhost:8800/api/workouts/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(workout),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const updatedWorkout = await response.json();
+      dispatch({ type: "UPDATE_WORKOUT", payload: updatedWorkout });
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={newTitle}
+        onChange={(e) => setNewTitle(e.target.value)}
+        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-3xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+      />
+      <input
+        type="number"
+        value={newReps}
+        onChange={(e) => setNewReps(parseInt(e.target.value))}
+        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-3xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+      />
+      <input
+        type="number"
+        value={newLoad}
+        onChange={(e) => setNewLoad(parseInt(e.target.value))}
+        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-3xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+      />
+      <button
+        onClick={handleUpdate}
+        className="my-4 block w-1/3 px-4 py-4 bg-primary hover:bg-heading border-2 border-heading rounded-lg text-2xl text-white "
+      >
+        Update
+      </button>
+    </div>
+  );
+};
+
+export default EditWorkout;

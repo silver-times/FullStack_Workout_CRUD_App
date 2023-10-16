@@ -26,12 +26,12 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex container mx-auto gap-8 h-screen">
+    <div className="flex container mx-auto gap-8">
       <div className="w-3/4">
         {state.workouts &&
           state.workouts.map((workout) => (
-            <span>
-              <WorkoutDetail key={workout.title} {...workout} />
+            <span key={workout.title} className="mb-32">
+              <WorkoutDetail {...workout} />
             </span>
           ))}
       </div>
