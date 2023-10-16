@@ -3,12 +3,6 @@ import WorkoutDetail from "../components/WorkoutDetail";
 import WorkoutForm from "../components/WorkoutForm";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 
-type Workout = {
-  title: string;
-  reps: number;
-  load: number;
-};
-
 const Home = () => {
   const { state, dispatch } = useWorkoutContext();
 
@@ -32,7 +26,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex container mx-auto gap-8">
+    <div className="flex container mx-auto gap-8 h-screen">
       <div className="w-3/4">
         {state.workouts &&
           state.workouts.map((workout) => (
