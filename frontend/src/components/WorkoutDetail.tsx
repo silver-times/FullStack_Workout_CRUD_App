@@ -16,7 +16,7 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
 }) => {
   const { dispatch } = useWorkoutContext();
 
-  const handleClick = async () => {
+  const handleDelete = async () => {
     const response = await fetch(`http://localhost:8800/api/workouts/${id}`, {
       method: "DELETE",
     });
@@ -36,12 +36,17 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
         <h1 className="my-2 uppercase text-heading  font-extrabold text-3xl">
           {title}
         </h1>
-        <span
-          onClick={handleClick}
-          className="material-symbols-outlined bg-warning rounded-full p-1 text-black hover:text-white hover:bg-black  cursor-pointer"
-        >
-          delete
-        </span>
+        <div className="flex gap-2">
+          <span className="material-symbols-outlined bg-heading rounded-full p-1 text-black hover:text-white hover:bg-black  cursor-pointer">
+            edit
+          </span>
+          <span
+            onClick={handleDelete}
+            className="material-symbols-outlined bg-warning rounded-full p-1 text-black hover:text-white hover:bg-black  cursor-pointer"
+          >
+            delete
+          </span>
+        </div>
       </div>
       <p className="text-xl font-light text-white">
         <strong>Load (kg):</strong> {load}

@@ -3,6 +3,12 @@ import WorkoutDetail from "../components/WorkoutDetail";
 import WorkoutForm from "../components/WorkoutForm";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 
+type Workout = {
+  title: string;
+  reps: number;
+  load: number;
+};
+
 const Home = () => {
   const { state, dispatch } = useWorkoutContext();
 
@@ -30,7 +36,9 @@ const Home = () => {
       <div className="w-3/4">
         {state.workouts &&
           state.workouts.map((workout) => (
-            <WorkoutDetail key={workout.title} {...workout} />
+            <span>
+              <WorkoutDetail key={workout.title} {...workout} />
+            </span>
           ))}
       </div>
       <div className="w-1/4">
