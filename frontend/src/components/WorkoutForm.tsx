@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+import { useWorkoutContext } from "../hooks/useWorkoutContext";
+
+type Workout = {
+  title: string;
+  reps: number;
+  load: number;
+};
 
 const WorkoutForm: React.FC = () => {
+  const { dispatch } = useWorkoutContext();
+
   const [title, setTitle] = useState("");
   const [reps, setReps] = useState(0);
   const [load, setLoad] = useState(0);
@@ -9,7 +18,7 @@ const WorkoutForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const workout = {
+    const workout: Workout = {
       title,
       reps,
       load,
@@ -34,6 +43,7 @@ const WorkoutForm: React.FC = () => {
     setReps(0);
     setLoad(0);
     setError(null);
+    dispatch({ type: "CREATE_WORKOUT", payload: json });
   };
 
   return (

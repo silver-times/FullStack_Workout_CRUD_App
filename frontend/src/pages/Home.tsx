@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import WorkoutDetail from "../components/WorkoutDetail";
 import WorkoutForm from "../components/WorkoutForm";
+import { useWorkoutContext } from "../hooks/useWorkoutContext";
 
 const Home = () => {
-  const [workouts, setWorkouts] = useState([]);
+  const { state, dispatch } = useWorkoutContext();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -15,25 +16,22 @@ const Home = () => {
           console.log("Error in fetching workouts");
           return;
         }
-        console.log(data);
-        setWorkouts(data);
+        dispatch({ type: "SET_WORKOUTS", payload: data });
       } catch (err) {
         console.log(err);
       }
     };
 
     fetchWorkouts();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="flex container mx-auto gap-8">
       <div className="w-3/4">
-        <h1 className="text-2xl ">
-          {workouts &&
-            workouts.map((workout: any) => (
-              <WorkoutDetail key={workout.id} {...workout} />
-            ))}
-        </h1>
+        {state.workouts &&
+          state.workouts.map((workout) => (
+            <WorkoutDetail key={workout.title} {...workout} />
+          ))}
       </div>
       <div className="w-1/4">
         <WorkoutForm />

@@ -8,7 +8,7 @@ type WorkoutDetailProps = {
 
 const WorkoutDetail: React.FC<WorkoutDetailProps> = ({ title, reps, load }) => {
   return (
-    <div className="rounded-xl my-5 mx-auto p-5 relative shadow-lg border-2 border-heading bg-[#1F8A70] ">
+    <div className="rounded-xl my-5 mx-auto p-5 relative shadow-lg border-2 border-heading bg-[#1F8A70]">
       <h1 className="my-2 uppercase text-heading  font-extrabold text-3xl">
         {title}
       </h1>
