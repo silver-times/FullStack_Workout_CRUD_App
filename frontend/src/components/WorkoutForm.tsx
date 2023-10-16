@@ -9,20 +9,23 @@ type Workout = {
 
 const WorkoutForm: React.FC = () => {
   const { dispatch } = useWorkoutContext();
+  const [workout, setWorkout] = useState<Workout>({
+    title: "",
+    reps: 0,
+    load: 0,
+  });
+  const [error, setError] = useState<string | null>(null);
 
-  const [title, setTitle] = useState("");
-  const [reps, setReps] = useState(0);
-  const [load, setLoad] = useState(0);
-  const [error, setError] = useState(null);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setWorkout((prevData) => ({
+      ...prevData,
+      [name]: name === "reps" || name === "load" ? parseInt(value) : value,
+    }));
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const workout: Workout = {
-      title,
-      reps,
-      load,
-    };
 
     const res = await fetch("http://localhost:8800/api/workouts/", {
       method: "POST",
@@ -38,9 +41,7 @@ const WorkoutForm: React.FC = () => {
       return;
     }
 
-    setTitle("");
-    setReps(0);
-    setLoad(0);
+    setWorkout({ title: "", reps: 0, load: 0 });
     setError(null);
     dispatch({ type: "CREATE_WORKOUT", payload: json });
   };
@@ -54,24 +55,25 @@ const WorkoutForm: React.FC = () => {
       <input
         type="text"
         placeholder="Title"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
+        name="title"
+        value={workout.title}
+        onChange={handleChange}
         className="my-4 block w-full px-4 py-4 bg-white border-2 border-heading rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
 
       <input
         type="text"
         placeholder="Load (in kg)"
-        value={reps}
-        onChange={(event) => setReps(parseInt(event.target.value))}
+        name="load"
+        onChange={handleChange}
         className="my-4 block w-full px-4 py-4 bg-white border-2 border-heading rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
 
       <input
         type="number"
         placeholder="Reps"
-        value={load}
-        onChange={(event) => setLoad(parseInt(event.target.value))}
+        name="reps"
+        onChange={handleChange}
         className="my-4 block w-full px-4 py-4 bg-white border-2 border-heading rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
 
