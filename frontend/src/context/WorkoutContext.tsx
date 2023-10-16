@@ -1,6 +1,7 @@
 import { createContext, Dispatch, Reducer, useReducer } from "react";
 
 type Workout = {
+  id: number;
   title: string;
   reps: number;
   load: number;
@@ -42,7 +43,12 @@ const workoutReducer: Reducer<WorkoutState, WorkoutAction> = (
       return {
         workouts: [action.payload, ...state.workouts],
       };
-
+    case "DELETE_WORKOUT":
+      return {
+        workouts: state.workouts.filter(
+          (workout) => workout.id !== action.payload.id
+        ),
+      };
     default:
       return state;
   }
