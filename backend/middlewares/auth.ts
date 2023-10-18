@@ -3,19 +3,16 @@ import { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
 
-type User = {
-  id: number;
-  email: string;
-  iat: number;
-  exp: number;
-};
-
-type RequestExt = Request & { user: null | User };
+type RequestExt = Request & { payload?: number };
 
 dotenv.config();
 const prisma = new PrismaClient();
 
-export const auth = async (req: Request, res: Response, next: NextFunction) => {
+export const auth = async (
+  req: RequestExt,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     let token = req.headers.authorization;
 
@@ -34,12 +31,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     if (!user) {
       return res.status(401).json({ error: "You are not authenticated!" });
     }
-    (req as RequestExt).user = {
-      id: user.id,
-      email: user.email,
-      iat: 0,
-      exp: 0,
-    };
+    req.payload = user.id;
     next();
   } catch (error) {
     res.status(401).json({ error: "You are not authenticated." });

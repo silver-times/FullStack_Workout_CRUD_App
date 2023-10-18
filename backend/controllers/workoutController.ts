@@ -1,12 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 
+type RequestExt = Request & { payload?: number };
+
 const prisma = new PrismaClient();
 
 // Get all workouts
-export const getWorkouts = async (req: Request, res: Response) => {
+export const getWorkouts = async (req: RequestExt, res: Response) => {
   try {
-    const workouts = await prisma.workout.findMany();
+    const userId = req.payload;
+    const workouts = await prisma.workout.findMany({
+      where: {
+        userId,
+      },
+    });
     res.status(200).json(workouts);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
@@ -34,18 +41,22 @@ export const getWorkout = async (req: Request, res: Response) => {
 };
 
 // Create a workout
-export const createWorkout = async (req: Request, res: Response) => {
+export const createWorkout = async (req: RequestExt, res: Response) => {
   try {
     const { title, reps, load } = req.body;
 
     if (!title || !reps || !load) {
       return res.status(400).json({ error: "Please fill all fields" });
     }
+
+    const userId = req.payload;
+
     const workout = await prisma.workout.create({
       data: {
         title,
         reps,
         load,
+        User: { connect: { id: userId } },
       },
     });
     res.status(200).json(workout);
