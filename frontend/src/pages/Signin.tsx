@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSignin } from "../hooks/useSignin";
 
 const Signin = () => {
@@ -6,40 +6,78 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const { signin, error } = useSignin();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     await signin(email, password);
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col items-center justify-center gap-2"
-    >
-      <input
-        type="email"
-        value={email}
-        placeholder="Email"
-        onChange={(event) => setEmail(event.target.value)}
-        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
-      />
+    <div className="py-16">
+      <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+        <div
+          className="hidden lg:block lg:w-1/2 bg-center bg-no-repeat bg-cover"
+          style={{
+            backgroundImage:
+              "url('https://media.istockphoto.com/id/1159331475/photo/athletic-woman-exercising-with-kettle-bell-on-a-class-in-a-health-club.jpg?s=612x612&w=0&k=20&c=R60fVfa06s0FxvRvPKJ2hbYkr3_NzPwRCtdCVqscW3Y=')",
+          }}
+        ></div>
+        <div className="w-full p-8 lg:w-1/2">
+          <h2 className="text-2xl font-semibold text-gray-700 text-center">
+            💪🏻workouts
+          </h2>
+          <p className="text-lg text-gray-600 text-center">Welcome back!</p>
 
-      <input
-        type="password"
-        value={password}
-        placeholder="Password"
-        onChange={(event) => setPassword(event.target.value)}
-        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
-      />
-
-      <button
-        type="submit"
-        className="my-4 block w-1/3 px-4 py-4 bg-secondary hover:bg-primary border-2 border-heading rounded-lg text-2xl text-white "
-      >
-        Sign In
-      </button>
-      {error && <p className="text-warning">{error}</p>}
-    </form>
+          <div className="mt-4 flex items-center justify-between">
+            <span className="border-b w-1/5 lg:w-1/4"></span>
+            <a href="#" className="text-xs text-center text-gray-500 uppercase">
+              login with email
+            </a>
+            <span className="border-b w-1/5 lg:w-1/4"></span>
+          </div>
+          <div className="mt-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Email Address
+            </label>
+            <input
+              type="email"
+              value={email}
+              placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
+              className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+            />
+          </div>
+          <div className="mt-4">
+            <div className="flex justify-between">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Password
+              </label>
+            </div>
+            <input
+              type="password"
+              value={password}
+              placeholder="Password"
+              onChange={(event) => setPassword(event.target.value)}
+              className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+            />
+          </div>
+          <div className="mt-8">
+            <button
+              onClick={handleSubmit}
+              className="my-4 block w-full px-4 py-4 bg-primary hover:bg-heading border-2 hover:text-primary rounded-lg text-2xl text-white "
+            >
+              Login
+            </button>
+            {error && <p className="text-warning">{error}</p>}
+          </div>
+          <div className="mt-4 flex items-center justify-between">
+            <span className="border-b w-1/5 md:w-1/4"></span>
+            <a href="/signup" className="text-xs text-gray-500 uppercase">
+              or sign up
+            </a>
+            <span className="border-b w-1/5 md:w-1/4"></span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
