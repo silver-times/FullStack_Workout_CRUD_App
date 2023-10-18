@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 type Workout = {
   title: string;
@@ -15,6 +16,7 @@ const WorkoutForm: React.FC = () => {
     load: 0,
   });
   const [error, setError] = useState<string | null>(null);
+  const { token } = useAuthContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -32,6 +34,7 @@ const WorkoutForm: React.FC = () => {
       body: JSON.stringify(workout),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
     const json = await res.json();

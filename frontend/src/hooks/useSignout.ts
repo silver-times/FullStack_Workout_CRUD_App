@@ -1,11 +1,12 @@
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignout = () => {
-  const { signout } = useAuthContext();
+  const { setUser, setToken } = useAuthContext();
 
   const signoutHandler = async () => {
     localStorage.removeItem("user");
-    signout();
+    setUser(null);
+    setToken(null);
   };
 
   return { signoutHandler };

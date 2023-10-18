@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 type EditWorkoutProps = {
   id: number;
@@ -17,6 +18,7 @@ const EditWorkout = ({
   setIsEditing,
 }: EditWorkoutProps) => {
   const { dispatch } = useWorkoutContext();
+  const { token } = useAuthContext();
 
   const [newTitle, setNewTitle] = useState(title);
   const [newReps, setNewReps] = useState(reps);
@@ -35,6 +37,7 @@ const EditWorkout = ({
       body: JSON.stringify(workout),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 

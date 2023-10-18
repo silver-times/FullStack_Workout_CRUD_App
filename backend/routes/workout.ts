@@ -10,14 +10,16 @@ import { auth } from "../middlewares/auth";
 
 const workoutRouter = express.Router();
 
-workoutRouter.get("/", auth, getWorkouts);
+workoutRouter.use(auth);
 
-workoutRouter.get("/:id", auth, getWorkout);
+workoutRouter.get("/", getWorkouts);
 
-workoutRouter.post("/", auth, createWorkout);
+workoutRouter.get("/:id", getWorkout);
 
-workoutRouter.put("/:id", auth, updateWorkout);
+workoutRouter.post("/", createWorkout);
 
-workoutRouter.delete("/:id", auth, deleteWorkout);
+workoutRouter.put("/:id", updateWorkout);
+
+workoutRouter.delete("/:id", deleteWorkout);
 
 export default workoutRouter;

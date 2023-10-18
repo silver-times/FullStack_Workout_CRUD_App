@@ -4,7 +4,7 @@ import { useAuthContext } from "./useAuthContext";
 export const useSignin = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { setUser } = useAuthContext();
+  const { setUser, setToken } = useAuthContext();
 
   const signin = async (email: string, password: string) => {
     setIsLoading(true);
@@ -26,6 +26,7 @@ export const useSignin = () => {
 
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data.user);
+    setToken(data.token);
     setIsLoading(false);
   };
 

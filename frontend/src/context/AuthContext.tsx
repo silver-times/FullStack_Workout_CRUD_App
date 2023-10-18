@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 type User = {
   name: string;
@@ -8,17 +8,15 @@ type User = {
 type AuthContextType = {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
-  signup: (name: string, email: string) => void;
-  signin: (email: string, password: string) => void;
-  signout: () => void;
+  token: string | null;
+  setToken: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const AuthContext = createContext<AuthContextType>({
   user: null,
   setUser: () => {},
-  signup: () => {},
-  signin: () => {},
-  signout: () => {},
+  token: null,
+  setToken: () => {},
 });
 
 interface ChildrenProps {
@@ -27,27 +25,17 @@ interface ChildrenProps {
 
 const AuthContextProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
-  const signup = (name: string, email: string) => {
-    setUser({
-      name,
-      email,
-    });
-  };
-
-  const signin = (email: string, password: string) => {
-    setUser({
-      name: "John Doe",
-      email,
-    });
-  };
-
-  const signout = () => {
-    setUser(null);
-  };
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, signup, signin, signout }}>
+    <AuthContext.Provider value={{ user, setUser, token, setToken }}>
       {children}
     </AuthContext.Provider>
   );

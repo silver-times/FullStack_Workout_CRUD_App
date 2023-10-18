@@ -2,14 +2,20 @@ import { useEffect } from "react";
 import WorkoutDetail from "../components/WorkoutDetail";
 import WorkoutForm from "../components/WorkoutForm";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Home = () => {
   const { state, dispatch } = useWorkoutContext();
+  const { user, token } = useAuthContext();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const res = await fetch("http://localhost:8800/api/workouts/");
+        const res = await fetch("http://localhost:8800/api/workouts/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await res.json();
 
         if (!res.ok) {
@@ -22,8 +28,10 @@ const Home = () => {
       }
     };
 
-    fetchWorkouts();
-  }, [dispatch]);
+    if (user) {
+      fetchWorkouts();
+    }
+  }, [dispatch, user, token]);
 
   return (
     <div className="flex container mx-auto gap-8">

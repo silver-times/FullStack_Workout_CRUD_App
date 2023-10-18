@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import EditWorkout from "./EditWorkout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 type WorkoutDetailProps = {
   id: number;
@@ -17,10 +18,14 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
 }) => {
   const { dispatch } = useWorkoutContext();
   const [isEditing, setIsEditing] = useState(false);
+  const { token } = useAuthContext();
 
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:8800/api/workouts/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     const json = await response.json();
 
