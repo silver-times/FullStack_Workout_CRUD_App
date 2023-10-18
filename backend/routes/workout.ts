@@ -6,17 +6,18 @@ import {
   updateWorkout,
   deleteWorkout,
 } from "../controllers/workoutController";
+import { auth } from "../middlewares/auth";
 
 const workoutRouter = express.Router();
 
-workoutRouter.get("/", getWorkouts);
+workoutRouter.get("/", auth, getWorkouts);
 
-workoutRouter.get("/:id", getWorkout);
+workoutRouter.get("/:id", auth, getWorkout);
 
-workoutRouter.post("/", createWorkout);
+workoutRouter.post("/", auth, createWorkout);
 
-workoutRouter.put("/:id", updateWorkout);
+workoutRouter.put("/:id", auth, updateWorkout);
 
-workoutRouter.delete("/:id", deleteWorkout);
+workoutRouter.delete("/:id", auth, deleteWorkout);
 
 export default workoutRouter;

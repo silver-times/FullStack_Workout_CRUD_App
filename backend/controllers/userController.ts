@@ -2,8 +2,10 @@ import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import { hash, compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
 const prisma = new PrismaClient();
+dotenv.config();
 
 export const signup = async (req: Request, res: Response) => {
   const { email, name, password } = req.body;
@@ -31,13 +33,12 @@ export const signup = async (req: Request, res: Response) => {
 
     const token = jwt.sign(
       {
-        userId: user.id,
+        id: user.id,
         email: user.email,
       },
-      "secret",
+      process.env.JWT_SECRET as string,
       { expiresIn: "1h" }
     );
-
     res.status(201).json({ user, token });
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
@@ -65,10 +66,10 @@ export const signin = async (req: Request, res: Response) => {
 
     const token = jwt.sign(
       {
-        userId: user.id,
+        id: user.id,
         email: user.email,
       },
-      "secret",
+      process.env.JWT_SECRET as string,
       { expiresIn: "1h" }
     );
 
