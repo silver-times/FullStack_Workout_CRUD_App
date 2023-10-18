@@ -3,6 +3,8 @@ import React, { createContext, useEffect, useState } from "react";
 type User = {
   name: string;
   email: string;
+  id: number;
+  password: string;
 };
 
 type AuthContextType = {
@@ -28,9 +30,15 @@ const AuthContextProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    const existingUser = localStorage.getItem("user");
-    if (existingUser) {
-      setUser(JSON.parse(existingUser));
+    const userJSON = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    if (userJSON) {
+      setUser(JSON.parse(userJSON!));
+    }
+
+    if (token) {
+      setToken(JSON.parse(token!));
     }
   }, []);
 

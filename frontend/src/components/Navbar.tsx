@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSignout } from "../hooks/useSignout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const { signoutHandler } = useSignout();

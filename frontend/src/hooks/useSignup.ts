@@ -24,7 +24,8 @@ export const useSignup = () => {
       return;
     }
 
-    localStorage.setItem("user", JSON.stringify(data));
+    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", JSON.stringify(data.token));
     setUser(data.user);
     setToken(data.token);
     setIsLoading(false);

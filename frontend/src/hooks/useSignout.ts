@@ -5,6 +5,7 @@ export const useSignout = () => {
 
   const signoutHandler = async () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUser(null);
     setToken(null);
   };

@@ -17,6 +17,7 @@ const Home = () => {
           },
         });
         const data = await res.json();
+        console.log("TESTING");
 
         if (!res.ok) {
           console.log("Error in fetching workouts");
@@ -28,9 +29,7 @@ const Home = () => {
       }
     };
 
-    if (user) {
-      fetchWorkouts();
-    }
+    fetchWorkouts();
   }, [dispatch, user, token]);
 
   return (
