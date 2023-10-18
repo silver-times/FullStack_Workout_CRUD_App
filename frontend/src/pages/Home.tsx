@@ -17,7 +17,6 @@ const Home = () => {
           },
         });
         const data = await res.json();
-        console.log("TESTING");
 
         if (!res.ok) {
           console.log("Error in fetching workouts");

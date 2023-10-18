@@ -4,7 +4,7 @@ import { useSignin } from "../hooks/useSignin";
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signin, error, isLoading } = useSignin();
+  const { signin, error } = useSignin();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
