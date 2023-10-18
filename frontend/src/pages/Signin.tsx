@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useSignin } from "../hooks/useSignin";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signin, error, isLoading } = useSignin();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Email:", email);
+    await signin(email, password);
   };
 
   return (
@@ -36,6 +38,7 @@ const Signin = () => {
       >
         Sign In
       </button>
+      {error && <p className="text-warning">{error}</p>}
     </form>
   );
 };

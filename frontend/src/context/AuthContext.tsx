@@ -28,8 +28,6 @@ interface ChildrenProps {
 const AuthContextProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  console.log("User:", user);
-
   const signup = (name: string, email: string) => {
     setUser({
       name,
