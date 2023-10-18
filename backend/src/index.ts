@@ -3,12 +3,14 @@ import cors from "cors";
 import { KEYS } from "../config/keys";
 import { client } from "../config/database";
 import workoutRouter from "../routes/workout";
+import userRouter from "../routes/user";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/users", userRouter);
 app.use("/api/workouts", workoutRouter);
 
 app.listen(KEYS.PORT, async () => {

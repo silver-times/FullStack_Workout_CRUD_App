@@ -70,7 +70,7 @@ const WorkoutForm: React.FC = () => {
       />
 
       <input
-        type="number"
+        type="text"
         placeholder="Reps"
         name="reps"
         onChange={handleChange}
