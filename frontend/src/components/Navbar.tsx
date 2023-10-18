@@ -17,15 +17,14 @@ const Navbar = () => {
           <h1 className="text-6xl font-extralight">💪🏻workouts</h1>
         </Link>
         <div className="flex gap-5">
-          {user && (
+          {user ? (
             <>
               <p className="text-xl font-bold">Hi, {user.name} 👋🏻</p>
               <button onClick={handleClick} className="text-xl font-bold">
                 Signout
               </button>
             </>
-          )}
-          {!user && (
+          ) : (
             <>
               <Link to="/signin">
                 <p className="text-xl font-bold">Signin</p>
