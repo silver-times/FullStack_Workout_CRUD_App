@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignin } from "../hooks/useSignin";
+import SignInImage from "../assets/images/signin.jpg";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -15,10 +16,7 @@ const Signin = () => {
       <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
         <div
           className="hidden lg:block lg:w-1/2 bg-center bg-no-repeat bg-cover"
-          style={{
-            backgroundImage:
-              "url('https://media.istockphoto.com/id/1159331475/photo/athletic-woman-exercising-with-kettle-bell-on-a-class-in-a-health-club.jpg?s=612x612&w=0&k=20&c=R60fVfa06s0FxvRvPKJ2hbYkr3_NzPwRCtdCVqscW3Y=')",
-          }}
+          style={{ backgroundImage: `url(${SignInImage})` }}
         ></div>
         <div className="w-full p-8 lg:w-1/2">
           <h2 className="text-2xl font-semibold text-gray-700 text-center">

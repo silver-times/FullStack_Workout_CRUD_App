@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../config/database";
 import { Request, Response } from "express";
 
 type RequestExt = Request & { payload?: number };
-
-const prisma = new PrismaClient();
 
 // Get all workouts
 export const getWorkouts = async (req: RequestExt, res: Response) => {

@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import { KEYS } from "../config/keys";
-import { client } from "../config/database";
 import workoutRouter from "../routes/workout";
 import userRouter from "../routes/user";
 
@@ -15,7 +14,6 @@ app.use("/api/workouts", workoutRouter);
 
 app.listen(KEYS.PORT, async () => {
   try {
-    await client.connect();
     console.log(`Server running on port ${KEYS.PORT}`);
     console.log(`Database connected`);
   } catch (error) {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
+import SignUpImage from "../assets/images/signup.jpg";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -16,10 +17,7 @@ const Signup = () => {
       <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
         <div
           className="hidden lg:block lg:w-1/2 bg-cover "
-          style={{
-            backgroundImage:
-              "url('https://i.pinimg.com/564x/c3/d8/30/c3d8307158fac678a66d35cf62ca58cb.jpg')",
-          }}
+          style={{ backgroundImage: `url(${SignUpImage})` }}
         ></div>
         <div className="w-full p-8 lg:w-1/2">
           <h2 className="text-2xl font-semibold text-gray-700 text-center">

@@ -1,8 +1,5 @@
-import pg from "pg";
-import { KEYS } from "./keys";
+import { PrismaClient } from "@prisma/client";
 
-const { Client } = pg;
+const prisma = new PrismaClient();
 
-export const client = new Client({
-  connectionString: `postgres://${KEYS.DB_USER}:${KEYS.DB_PASSWORD}@${KEYS.DB_HOST}:${KEYS.DB_PORT}/${KEYS.DB_NAME}`,
-});
+export { prisma };
