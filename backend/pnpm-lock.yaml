@@ -36,8 +36,8 @@ dependencies:
     specifier: ^9.0.2
     version: 9.0.2
   node:
-    specifier: ^21.0.0
-    version: 21.0.0
+    specifier: 20.2.0
+    version: 20.2.0
   pg:
     specifier: ^8.11.3
     version: 8.11.3
@@ -749,8 +749,8 @@ packages:
     resolution: {integrity: sha512-opgw9iSCAzT2+6wJOETCpeRYAQxSopqQ2z+N6BXwIMsQQ7Zj5M8MaafQY8JMlolRR6R1UXg2WmhKp0p9lSOivg==}
     dev: false
 
-  /node@21.0.0:
-    resolution: {integrity: sha512-k0wCk1CXe+Bp6sDniB6x52IKMaP849Ei01zA0U88/iOGLrX8jnkyfCThlRqNrHT8hL0mG/OAU+8Z87N9atVRQQ==}
+  /node@20.2.0:
+    resolution: {integrity: sha512-oF1+u42FT/nFtRFdcsUNdexVCWQKAHB7LtKHOk/9o0cQBq19leB/0awrB3ZdzHU/Pz9tC9RHwgd52PK9bON30A==}
     engines: {npm: '>=5.0.0'}
     hasBin: true
     requiresBuild: true
