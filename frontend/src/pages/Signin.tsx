@@ -26,9 +26,9 @@ const Signin = () => {
 
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 lg:w-1/4"></span>
-            <a href="#" className="text-xs text-center text-gray-500 uppercase">
+            <p className="text-xs text-center text-gray-500 uppercase">
               login with email
-            </a>
+            </p>
             <span className="border-b w-1/5 lg:w-1/4"></span>
           </div>
           <div className="mt-4">
