@@ -11,11 +11,14 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const res = await fetch("http://localhost:8800/api/workouts/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await fetch(
+          "https://fullstack-workout-crud-app.onrender.com/api/workouts/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         const data = await res.json();
 
         if (!res.ok) {

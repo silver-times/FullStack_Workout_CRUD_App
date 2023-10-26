@@ -10,11 +10,14 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:8800/api/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, name, password }),
-    });
+    const response = await fetch(
+      "https://fullstack-workout-crud-app.onrender.com/api/users/signup",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name, password }),
+      }
+    );
 
     const data = await response.json();
 

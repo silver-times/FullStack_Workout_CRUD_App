@@ -32,14 +32,17 @@ const EditWorkout = ({
       load: newLoad,
     };
 
-    const response = await fetch(`http://localhost:8800/api/workouts/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(workout),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `https://fullstack-workout-crud-app.onrender.com/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(workout),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (response.ok) {
       const updatedWorkout = await response.json();

@@ -21,12 +21,15 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
   const { token } = useAuthContext();
 
   const handleDelete = async () => {
-    const response = await fetch(`http://localhost:8800/api/workouts/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `https://fullstack-workout-crud-app.onrender.com/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const json = await response.json();
 
     if (response.ok) {
