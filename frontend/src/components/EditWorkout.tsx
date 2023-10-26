@@ -33,7 +33,7 @@ const EditWorkout = ({
     };
 
     const response = await fetch(
-      `https://fullstack-workout-crud-app.onrender.com/${id}`,
+      `https://fullstack-workout-crud-app.onrender.com/api/workouts/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(workout),

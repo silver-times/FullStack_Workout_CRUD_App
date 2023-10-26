@@ -22,7 +22,7 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
 
   const handleDelete = async () => {
     const response = await fetch(
-      `https://fullstack-workout-crud-app.onrender.com/${id}`,
+      `https://fullstack-workout-crud-app.onrender.com/api/workouts/${id}`,
       {
         method: "DELETE",
         headers: {
