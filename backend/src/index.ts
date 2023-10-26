@@ -11,6 +11,9 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/workouts", workoutRouter);
+app.get("/test", (req, res) => {
+  res.send("Hello World");
+});
 
 app.listen(KEYS.PORT, async () => {
   try {
