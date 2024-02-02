@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
-import { prisma } from "../config/database";
+import { prisma } from "../config/database.js";
 
 type RequestExt = Request & { payload?: number };
 

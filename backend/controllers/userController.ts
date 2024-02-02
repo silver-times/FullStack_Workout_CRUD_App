@@ -38,6 +38,7 @@ export const signup = async (req: Request, res: Response) => {
       process.env.JWT_SECRET as string,
       { expiresIn: "1h" }
     );
+
     res.status(201).json({ user, token });
   } catch (error) {
     console.error(error);

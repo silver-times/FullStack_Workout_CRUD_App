@@ -22,4 +22,4 @@ workoutRouter.put("/:id", updateWorkout);
 
 workoutRouter.delete("/:id", deleteWorkout);
 
-export default workoutRouter;
+export { workoutRouter };
