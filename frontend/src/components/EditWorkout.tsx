@@ -72,13 +72,13 @@ const EditWorkout = ({
       <div className="flex gap-2">
         <button
           onClick={handleUpdate}
-          className="my-4 block w-1/6 px-4 py-4 bg-primary hover:bg-heading border-2 border-heading rounded-lg text-2xl text-white "
+          className="my-4 block w-1/6 px-4 py-4 bg-green hover:bg-black border-2 rounded-lg font-bold text-2xl text-black hover:text-white"
         >
           Update
         </button>
         <button
           onClick={() => setIsEditing(false)}
-          className="my-4 block w-1/6 px-4 py-4 bg-primary hover:bg-heading border-2 border-heading rounded-lg text-2xl text-white "
+          className="my-4 block w-1/6 px-4 py-4 bg-green hover:bg-black border-2 rounded-lg font-bold text-2xl text-black hover:text-white"
         >
           Cancel
         </button>
