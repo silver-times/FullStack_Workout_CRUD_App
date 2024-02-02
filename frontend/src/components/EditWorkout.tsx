@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import apiconfig from "../config/api";
 
 type EditWorkoutProps = {
   id: number;
@@ -32,17 +33,14 @@ const EditWorkout = ({
       load: newLoad,
     };
 
-    const response = await fetch(
-      `https://fullstack-workout-crud-app.onrender.com/api/workouts/${id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(workout),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${apiconfig.workouts}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(workout),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (response.ok) {
       const updatedWorkout = await response.json();

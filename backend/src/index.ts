@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
-import { KEYS } from "../config/keys";
-import workoutRouter from "../routes/workout";
-import userRouter from "../routes/user";
+import { KEYS } from "../config/keys.js";
+import { workoutRouter } from "../routes/workout.js";
+import { userRouter } from "../routes/user.js";
 
 const app = express();
 

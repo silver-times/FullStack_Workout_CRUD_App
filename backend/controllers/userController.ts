@@ -1,6 +1,6 @@
-import { prisma } from "../config/database";
+import { prisma } from "../config/database.js";
 import { Request, Response } from "express";
-import { hash, compare } from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
@@ -20,7 +20,7 @@ export const signup = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "User already exists" });
     }
 
-    const hashedPassword = await hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const user = await prisma.user.create({
       data: {
@@ -38,6 +38,7 @@ export const signup = async (req: Request, res: Response) => {
       process.env.JWT_SECRET as string,
       { expiresIn: "1h" }
     );
+
     res.status(201).json({ user, token });
   } catch (error) {
     console.error(error);
@@ -58,7 +59,7 @@ export const signin = async (req: Request, res: Response) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    const matchPassword = await compare(password, user.password);
+    const matchPassword = await bcrypt.compare(password, user.password);
 
     if (!matchPassword) {
       return res.status(401).json({ error: "Unauthorized" });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import EditWorkout from "./EditWorkout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import apiconfig from "../config/api";
 
 type WorkoutDetailProps = {
   id: number;
@@ -21,15 +22,12 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
   const { token } = useAuthContext();
 
   const handleDelete = async () => {
-    const response = await fetch(
-      `https://fullstack-workout-crud-app.onrender.com/api/workouts/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${apiconfig.workouts}/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const json = await response.json();
 
     if (response.ok) {
@@ -45,7 +43,7 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
   };
 
   return (
-    <div className="rounded-xl my-5 mx-auto p-5 relative shadow-lg border-2 border-heading bg-[#1F8A70]">
+    <div className="bg-white bg-opacity-20 rounded-lg p-8 my-5 shadow-lg backdrop-filter backdrop-blur-md">
       {isEditing ? (
         <EditWorkout
           setIsEditing={setIsEditing}
@@ -57,13 +55,13 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
       ) : (
         <>
           <div className="flex justify-between items-center">
-            <h1 className="my-2 uppercase text-heading  font-extrabold text-3xl">
+            <h1 className="my-2 uppercase text-white font-bold text-5xl">
               {title}
             </h1>
             <div className="flex gap-2">
               <span
                 onClick={handleEdit}
-                className="material-symbols-outlined bg-heading rounded-full p-1 text-black hover:text-white hover:bg-black  cursor-pointer"
+                className="material-symbols-outlined bg-green rounded-full p-1 text-black hover:text-white hover:bg-black  cursor-pointer"
               >
                 edit
               </span>

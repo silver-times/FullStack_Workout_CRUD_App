@@ -3,6 +3,8 @@ import WorkoutDetail from "../components/WorkoutDetail";
 import WorkoutForm from "../components/WorkoutForm";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import apiconfig from "../config/api";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   const { state, dispatch } = useWorkoutContext();
@@ -11,14 +13,11 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const res = await fetch(
-          "https://fullstack-workout-crud-app.onrender.com/api/workouts/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await fetch(apiconfig.workouts, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await res.json();
 
         if (!res.ok) {
@@ -35,17 +34,20 @@ const Home = () => {
   }, [dispatch, user, token]);
 
   return (
-    <div className="flex container mx-auto gap-8">
-      <div className="w-3/4">
-        {state.workouts &&
-          state.workouts.map((workout) => (
-            <span key={workout.title} className="mb-32">
-              <WorkoutDetail {...workout} />
-            </span>
-          ))}
-      </div>
-      <div className="w-1/4">
-        <WorkoutForm />
+    <div className="pb-32">
+      <Navbar />
+      <div className="flex container mx-auto gap-8">
+        <div className="w-3/4">
+          {state.workouts &&
+            state.workouts.map((workout) => (
+              <span key={workout.title} className="mb-32">
+                <WorkoutDetail {...workout} />
+              </span>
+            ))}
+        </div>
+        <div className="w-1/4">
+          <WorkoutForm />
+        </div>
       </div>
     </div>
   );

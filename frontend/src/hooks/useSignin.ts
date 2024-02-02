@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import apiconfig from "../config/api";
 
 export const useSignin = () => {
   const [error, setError] = useState<string | null>(null);
@@ -10,14 +11,11 @@ export const useSignin = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch(
-      "https://fullstack-workout-crud-app.onrender.com/api/users/signin",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    const response = await fetch(apiconfig.signin, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
     const data = await response.json();
 

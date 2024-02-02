@@ -5,8 +5,8 @@ import {
   createWorkout,
   updateWorkout,
   deleteWorkout,
-} from "../controllers/workoutController";
-import { auth } from "../middlewares/auth";
+} from "../controllers/workoutController.js";
+import { auth } from "../middlewares/auth.js";
 
 const workoutRouter = express.Router();
 
@@ -22,4 +22,4 @@ workoutRouter.put("/:id", updateWorkout);
 
 workoutRouter.delete("/:id", deleteWorkout);
 
-export default workoutRouter;
+export { workoutRouter };

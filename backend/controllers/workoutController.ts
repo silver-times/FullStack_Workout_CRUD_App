@@ -1,4 +1,4 @@
-import { prisma } from "../config/database";
+import { prisma } from "../config/database.js";
 import { Request, Response } from "express";
 
 type RequestExt = Request & { payload?: number };
