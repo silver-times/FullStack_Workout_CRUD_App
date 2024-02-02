@@ -10,6 +10,7 @@ module.exports = {
       warning: "#FC7300",
       white: "#FFFFFF",
       black: "#000000",
+      green: "#3CB371",
     },
   },
   plugins: [],

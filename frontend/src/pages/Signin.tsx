@@ -11,7 +11,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="py-16">
+    <div className="flex justify-center items-center h-screen">
       <div className="bg-opacity-25 bg-blur-sm bg-black backdrop-filter backdrop-blur-sm  border border-white text-white shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl w-full p-8 lg:w-1/2">
         <h2 className="text-4xl md:text-8xl font-semibold text-gray-700 text-center">
           TRACKWISE
@@ -20,13 +20,13 @@ const Signin = () => {
 
         <div className="mt-4 flex items-center justify-between">
           <span className="border-b w-1/5 lg:w-1/4"></span>
-          <p className="text-sm text-center text-gray-500 uppercase">
+          <p className="text-md text-center text-gray-500 uppercase">
             login with email
           </p>
           <span className="border-b w-1/5 lg:w-1/4"></span>
         </div>
         <div className="mt-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label className="block text-white text-md text-sm font-bold mb-2">
             Email Address
           </label>
           <input
@@ -54,13 +54,13 @@ const Signin = () => {
         <div className="mt-8">
           <button
             onClick={handleSubmit}
-            className="my-4 block w-full px-4 py-4 bg-primary hover:bg-heading border-2 hover:text-primary rounded-lg text-2xl text-white "
+            className="my-4 block w-full px-4 py-4 bg-green hover:bg-black border-2 hover:text-white font-bold rounded-lg text-2xl text-black "
           >
-            Login
+            Signin
           </button>
           {error && <p className="text-warning">{error}</p>}
         </div>
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-8 flex items-center justify-between">
           <span className="border-b w-1/5 md:w-1/4"></span>
           <a href="/signup" className="text-xs text-gray-500 uppercase">
             or sign up
