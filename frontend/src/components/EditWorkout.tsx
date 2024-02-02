@@ -55,19 +55,19 @@ const EditWorkout = ({
         type="text"
         value={newTitle}
         onChange={(e) => setNewTitle(e.target.value)}
-        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-3xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+        className="block w-1/3 px-4 py-4 bg-white bg-opacity-80 p-8 my-5 shadow-lg backdrop-filter backdrop-blur-md border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
       <input
         type="number"
         value={newReps}
         onChange={(e) => setNewReps(parseInt(e.target.value))}
-        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-3xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+        className="block w-1/3 px-4 py-4 bg-white bg-opacity-80 p-8 my-5 shadow-lg backdrop-filter backdrop-blur-md border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
       <input
         type="number"
         value={newLoad}
         onChange={(e) => setNewLoad(parseInt(e.target.value))}
-        className="my-4 block w-1/3 px-4 py-4 bg-white border-2 border-heading rounded-lg text-3xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+        className="block w-1/3 px-4 py-4 bg-white bg-opacity-80 p-8 my-5 shadow-lg backdrop-filter backdrop-blur-md border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
       <div className="flex gap-2">
         <button

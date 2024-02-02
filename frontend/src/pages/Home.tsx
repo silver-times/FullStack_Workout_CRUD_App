@@ -36,8 +36,8 @@ const Home = () => {
   return (
     <div className="pb-32">
       <Navbar />
-      <div className="flex container mx-auto gap-8">
-        <div className="w-3/4">
+      <div className="container mx-auto gap-8 flex flex-col-reverse md:flex-row-reverse">
+        <div className="p-16 sm:order-2 md:w-3/4 md:p-0">
           {state.workouts &&
             state.workouts.map((workout) => (
               <span key={workout.title} className="mb-32">
@@ -45,7 +45,7 @@ const Home = () => {
               </span>
             ))}
         </div>
-        <div className="w-1/4">
+        <div className="p-16 sm:order-1 md:w-1/4 md:p-0">
           <WorkoutForm />
         </div>
       </div>

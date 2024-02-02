@@ -32,7 +32,7 @@ Welcome to TrackWise, the ultimate workout app that empowers you to create and s
 - Includes Auth
 - CRUD operations on workouts
 - Separate User-based workouts
-- Desktop view
+- Complete Responsive Design
 
 ## Installation
 

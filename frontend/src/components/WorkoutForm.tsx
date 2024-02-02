@@ -51,7 +51,7 @@ const WorkoutForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="sticky top-0 py-10">
+    <form onSubmit={handleSubmit} className="sticky top-0 py-2">
       <h3 className="font-bold uppercas text-4xl text-white text-center mt-5">
         Add new workout
       </h3>
@@ -62,7 +62,7 @@ const WorkoutForm: React.FC = () => {
         name="title"
         value={workout.title}
         onChange={handleChange}
-        className="my-4 block w-full px-4 py-4 bg-white border-2 rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+        className="block w-full px-4 py-4 bg-white bg-opacity-80 p-8 my-5 shadow-lg backdrop-filter backdrop-blur-md border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
 
       <input
@@ -71,7 +71,7 @@ const WorkoutForm: React.FC = () => {
         name="load"
         value={workout.load}
         onChange={handleChange}
-        className="my-4 block w-full px-4 py-4 bg-white border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+        className="block w-full px-4 py-4 bg-white bg-opacity-80 p-8 my-5 shadow-lg backdrop-filter backdrop-blur-md border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
 
       <input
@@ -80,7 +80,7 @@ const WorkoutForm: React.FC = () => {
         name="reps"
         value={workout.reps}
         onChange={handleChange}
-        className="my-4 block w-full px-4 py-4 bg-white border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
+        className="block w-full px-4 py-4 bg-white bg-opacity-80 p-8 my-5 shadow-lg backdrop-filter backdrop-blur-md border-2  rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
 
       <button

@@ -12,12 +12,12 @@ const Navbar = () => {
 
   return (
     <nav className="p-8 text-white">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container md:mx-auto flex flex-col md:flex md:flex-row justify-between items-center">
         <Link to="/">
           <h1 className="text-6xl font-extralight">TRACKWISE</h1>
         </Link>
-        <div className="flex gap-10">
-          {user ? (
+        <div className="flex gap-10 mt-4">
+          {user && (
             <>
               <p className="text-xl font-medium">Hi, {user.name} 👋🏻</p>
               <button
@@ -26,15 +26,6 @@ const Navbar = () => {
               >
                 Signout
               </button>
-            </>
-          ) : (
-            <>
-              <Link to="/signin">
-                <p className="text-xl font-bold">Signin</p>
-              </Link>
-              <Link to="/signup">
-                <p className="text-xl font-bold">Signup</p>
-              </Link>
             </>
           )}
         </div>
