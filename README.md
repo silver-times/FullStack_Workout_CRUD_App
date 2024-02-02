@@ -2,7 +2,7 @@
 
 ### Description:
 
-Welcome to 💪🏼 workouts, the ultimate workout app that empowers you to create and store your very own workouts, tailored to your unique fitness goals.
+Welcome to TrackWise, the ultimate workout app that empowers you to create and store your very own workouts, tailored to your unique fitness goals.
 
 ## Tech Stack
 
@@ -39,18 +39,13 @@ Welcome to 💪🏼 workouts, the ultimate workout app that empowers you to crea
 To run frontend
 
 ```bash
-  cd frontend
-  pnpm install
-  pnpm start
+  cd frontend && pnpm install && pnpm start
 ```
 
 To run backend
 
 ```bash
-  cd backend
-  pnpm install
-  docker compose up
-  pnpm dev
+  cd backend && pnpm install && docker compose up && pnpm dev
 ```
 
 ## Feedback
