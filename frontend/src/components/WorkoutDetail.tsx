@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import EditWorkout from "./EditWorkout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import apiconfig from "../config/api";
 
 type WorkoutDetailProps = {
   id: number;
@@ -21,15 +22,12 @@ const WorkoutDetail: React.FC<WorkoutDetailProps> = ({
   const { token } = useAuthContext();
 
   const handleDelete = async () => {
-    const response = await fetch(
-      `https://fullstack-workout-crud-app.onrender.com/api/workouts/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${apiconfig.workouts}/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const json = await response.json();
 
     if (response.ok) {

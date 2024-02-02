@@ -3,6 +3,7 @@ import WorkoutDetail from "../components/WorkoutDetail";
 import WorkoutForm from "../components/WorkoutForm";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import apiconfig from "../config/api";
 
 const Home = () => {
   const { state, dispatch } = useWorkoutContext();
@@ -11,14 +12,11 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const res = await fetch(
-          "https://fullstack-workout-crud-app.onrender.com/api/workouts/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await fetch(apiconfig.workouts, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await res.json();
 
         if (!res.ok) {
