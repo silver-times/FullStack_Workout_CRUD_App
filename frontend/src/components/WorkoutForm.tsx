@@ -51,7 +51,7 @@ const WorkoutForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="sticky top-0 py-10">
       <h3 className="font-bold uppercas text-3xl text-white text-center mt-5">
         Add new workout
       </h3>

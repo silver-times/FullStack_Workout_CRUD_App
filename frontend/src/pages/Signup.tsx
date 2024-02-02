@@ -73,9 +73,9 @@ const Signup = () => {
           </button>
           {error && <p className="text-warning">{error}</p>}
         </div>
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-8 flex items-center justify-between">
           <span className="border-b w-1/5 md:w-1/4"></span>
-          <a href="/signin" className="text-sm text-gray-500 uppercase">
+          <a href="/signin" className="text-xs text-gray-500 uppercase">
             or sign in
           </a>
           <span className="border-b w-1/5 md:w-1/4"></span>

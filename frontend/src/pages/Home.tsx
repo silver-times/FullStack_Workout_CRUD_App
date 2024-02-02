@@ -34,7 +34,7 @@ const Home = () => {
   }, [dispatch, user, token]);
 
   return (
-    <>
+    <div className="pb-32">
       <Navbar />
       <div className="flex container mx-auto gap-8">
         <div className="w-3/4">
@@ -49,7 +49,7 @@ const Home = () => {
           <WorkoutForm />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
