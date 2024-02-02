@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
-import SignUpImage from "../assets/images/signup.jpg";
 
 const Signup = () => {
   const [email, setEmail] = useState("");

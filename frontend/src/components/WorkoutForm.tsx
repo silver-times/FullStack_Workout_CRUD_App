@@ -53,7 +53,7 @@ const WorkoutForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h3 className="font-bold uppercas text-3xl text-white text-center mt-5">
-        Add a new workout
+        Add new workout
       </h3>
 
       <input
@@ -69,6 +69,7 @@ const WorkoutForm: React.FC = () => {
         type="text"
         placeholder="Load (in kg)"
         name="load"
+        value={workout.load}
         onChange={handleChange}
         className="my-4 block w-full px-4 py-4 bg-white border-2 border-heading rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
@@ -77,13 +78,14 @@ const WorkoutForm: React.FC = () => {
         type="text"
         placeholder="Reps"
         name="reps"
+        value={workout.reps}
         onChange={handleChange}
         className="my-4 block w-full px-4 py-4 bg-white border-2 border-heading rounded-lg text-xl placeholder-primary focus:outline-none focus:border-heading focus:ring-1 focus:ring-heading invalid:border-warning invalid:text-warning focus:invalid:border-warning focus:invalid:ring-warning "
       />
 
       <button
         type="submit"
-        className="my-4 block w-full px-4 py-4 bg-secondary hover:bg-primary border-2 border-heading rounded-lg text-2xl text-white "
+        className="my-4 block w-full px-4 py-4 bg-green hover:bg-black hover:text-white border-2  rounded-lg text-2xl text-black font-bold"
       >
         Submit
       </button>
