@@ -5,8 +5,8 @@ import {
   createWorkout,
   updateWorkout,
   deleteWorkout,
-} from "../controllers/workoutController.js";
-import { auth } from "../middlewares/auth.js";
+} from "../controllers/workoutController";
+import { auth } from "../middlewares/auth";
 
 const workoutRouter = express.Router();
 

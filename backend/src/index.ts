@@ -1,21 +1,28 @@
-import express from "express";
 import cors from "cors";
-import { KEYS } from "../config/keys.js";
-import { workoutRouter } from "../routes/workout.js";
-import { userRouter } from "../routes/user.js";
+import dotenv from "dotenv";
+import { userRouter } from "../routes/user";
+import { workoutRouter } from "../routes/workout";
+import express, { Express, Request, Response } from "express";
 
-const app = express();
+dotenv.config();
+
+const app: Express = express();
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("server works 🚀✨");
+});
+
 app.use("/api/users", userRouter);
 app.use("/api/workouts", workoutRouter);
 
-app.listen(KEYS.PORT, async () => {
+app.listen(PORT, async () => {
   try {
-    console.log(`Server running on port ${KEYS.PORT}`);
-    console.log(`Database connected`);
+    console.log(`Server running on port ${PORT} 🚀`);
+    console.log(`Database connected 📚✨`);
   } catch (error) {
     console.log(error);
   }
