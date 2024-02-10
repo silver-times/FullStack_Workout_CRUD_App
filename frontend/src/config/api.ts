@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8800";
+const API_URL = "http://3.72.126.59:8080";
 
 export default {
   signup: `${API_URL}/api/users/signup`,
